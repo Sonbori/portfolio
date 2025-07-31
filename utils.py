@@ -33,7 +33,6 @@ def increment_count():
     return counts
 
 def show_visitor_count():
-    """방문자 수만 사이드바 하단에 표시"""
     counts = increment_count()
     st.sidebar.markdown("---")
     st.sidebar.markdown(

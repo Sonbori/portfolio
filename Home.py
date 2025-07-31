@@ -1,4 +1,5 @@
 import streamlit as st
+from utils import show_visitor_count
 
 # 프로필 및 소개
 
@@ -21,6 +22,7 @@ def show_home():
             """
         )
         st.markdown("---")
+        show_visitor_count()
         st.write(
             "✉️ thsqhrjs@gmail.com   |   📞 +82-10-7234-6844"
         )
