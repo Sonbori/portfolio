@@ -25,5 +25,5 @@ def show_home():
             "✉️ thsqhrjs@gmail.com   |   📞 +82-10-7234-6844"
         )
         st.write(
-            "🔗 [GitHub](https://github.com/Sonbori)  |  📝 [Blog]()  |  📸 [Instagram]()"
+            "🔗 [GitHub](https://github.com/Sonbori)  |  📝 [Blog](https://velog.io/@sonbo/posts)  |  📸 [Instagram](https://www.instagram.com/)"
         )
