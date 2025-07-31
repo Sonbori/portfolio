@@ -6,8 +6,8 @@ import requests
 
 # 페이지 설정
 st.set_page_config(
-    page_title="손보건 Portofolio & Blog",
-    page_icon="📂",
+    page_title="bolog",
+    page_icon=":wave:",
     layout="wide",
     initial_sidebar_state="expanded"
 )
