@@ -8,7 +8,12 @@ def load_counts():
     if not os.path.exists(DATA_PATH):
         counts = {"total": 0, "today": 0, "yesterday": 0, "date": str(datetime.date.today())}
     else:
-        counts = json.load(open(DATA_PATH, "r", encoding="utf-8"))
+        try:
+            with open(DATA_PATH, "r", encoding="utf-8") as fp:
+                counts = json.load(fp)
+        except (ValueError, json.JSONDecodeError):
+            # 파일이 비어 있거나 JSON이 깨졌을 때 기본값으로 초기화
+            counts = {"total": 0, "today": 0, "yesterday": 0, "date": str(datetime.date.today())}
     return counts
 
 def save_counts(counts):
