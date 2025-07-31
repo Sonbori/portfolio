@@ -1,5 +1,6 @@
 import streamlit as st
 from Home import show_home
+from utils import show_footer
 
 st.set_page_config(
     page_title="sonbo",
