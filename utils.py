@@ -33,11 +33,15 @@ def increment_count():
     return counts
 
 def show_visitor_count():
+    """사이드바 맨 아래에 방문자 수 표시"""
     counts = increment_count()
-    st.sidebar.markdown("---")
     st.sidebar.markdown(
-        f"**🧑‍💻 방문자**  \n"
-        f"오늘: {counts['today']}  |  어제: {counts['yesterday']}  |  전체: {counts['total']}"
+        f"""
+        <div class="visitor-count">
+          🧑‍💻 방문자: 오늘 {counts['today']} | 어제 {counts['yesterday']} | 전체 {counts['total']}
+        </div>
+        """,
+        unsafe_allow_html=True
     )
     
 def load_markdown_posts(folder="posts"):
