@@ -26,7 +26,7 @@ with st.expander("프로젝트 C: 비정형 텍스트 분류"):
     st.write("**역할:** 텍스트 전처리, 모델 평가")
     st.write("**기술:** Python, NLTK, Hugging Face Transformers")
     st.write("**성과:** BERT 기반 분류기로 F1-score 0.82 달성")
-    st.image("images/project_c.png", caption="Confusion Matrix")
+    st.image("images/project_c.png", caption="발표자료 슬라이드")
     st.write("**배운 점:** NLP 전처리 및 Transfer Learning 경험")
 
 st.markdown("---")

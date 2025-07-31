@@ -5,3 +5,14 @@ body {
 }
 /* Hide streamlit header/footer */
 header, footer { visibility: hidden; height: 0; }
+
+/* Footer 스타일 */
+.footer {
+  width: 100%;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #888;           /* 텍스트는 조금 옅은 회색 */
+  padding: 1rem 0;
+  margin-top: 3rem;      /* 위 콘텐츠와 여백 */
+  border-top: 1px solid #44475a;  /* 위쪽에 얇은 구분선 */
+}
