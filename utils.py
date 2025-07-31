@@ -12,11 +12,11 @@ def load_counts():
             with open(DATA_PATH, "r", encoding="utf-8") as fp:
                 counts = json.load(fp)
         except (ValueError, json.JSONDecodeError):
-            # 파일이 비어 있거나 JSON이 깨졌을 때 기본값으로 초기화
             counts = {"total": 0, "today": 0, "yesterday": 0, "date": str(datetime.date.today())}
     return counts
 
 def save_counts(counts):
+    os.makedirs(os.path.dirname(DATA_PATH), exist_ok=True)
     with open(DATA_PATH, "w", encoding="utf-8") as f:
         json.dump(counts, f)
 
@@ -24,25 +24,23 @@ def increment_count():
     counts = load_counts()
     today = str(datetime.date.today())
     if counts["date"] != today:
-        counts["yesterday"] = counts["today"]
+        counts["yesterday"] = counts.get("today", 0)
         counts["today"] = 0
         counts["date"] = today
-    counts["today"] += 1
-    counts["total"] += 1
+    counts["today"] = counts.get("today", 0) + 1
+    counts["total"] = counts.get("total", 0) + 1
     save_counts(counts)
     return counts
 
-def show_footer():
+def show_visitor_count():
+    """방문자 수만 사이드바 하단에 표시"""
     counts = increment_count()
-    st.markdown(
-        f"""
-        <div class="footer">
-          © 2025 Shin's AI & ML/DL Learning Hub. All Rights Reserved.<br>
-          (오늘: {counts["today"]} | 어제: {counts["yesterday"]} | 전체: {counts["total"]})
-        </div>
-        """,
-        unsafe_allow_html=True
+    st.sidebar.markdown("---")
+    st.sidebar.markdown(
+        f"**👁️ 방문자**  \n"
+        f"오늘: {counts['today']}  |  어제: {counts['yesterday']}  |  전체: {counts['total']}"
     )
+    
 def load_markdown_posts(folder="posts"):
     posts = []
     for md in sorted(Path(folder).glob("*.md")):
