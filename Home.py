@@ -1,4 +1,5 @@
 import streamlit as st
+from utils import show_footer
 
 # 프로필 및 소개
 
@@ -27,3 +28,5 @@ def show_home():
         st.write(
             "🔗 [GitHub](https://github.com/Sonbori)  |  📝 [Blog](https://velog.io/@sonbo/posts)  |  📸 [Instagram](https://www.instagram.com/)"
         )
+
+show_footer()

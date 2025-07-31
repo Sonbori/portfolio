@@ -10,4 +10,3 @@ st.set_page_config(
 
 # 메인 홈 페이지 호출
 show_home()
-show_footer()

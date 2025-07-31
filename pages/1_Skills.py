@@ -1,4 +1,6 @@
 import streamlit as st
+from utils import show_footer
+
 
 st.header("⚙️ Skills")
 
@@ -25,3 +27,5 @@ with viz:
     st.progress(0.8)
 
 st.markdown("---")
+
+show_footer()

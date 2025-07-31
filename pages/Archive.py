@@ -1,5 +1,7 @@
 import streamlit as st
 from utils import load_markdown_posts
+from utils import show_footer
+
 
 st.title("🗂️ Archive")
 
@@ -17,3 +19,5 @@ filtered = [p for p in posts if
 st.write(f"### {len(filtered)}개의 게시글")
 for p in filtered:
     st.markdown(f"- [{p['title']}]({p['path']})  ")
+
+show_footer()

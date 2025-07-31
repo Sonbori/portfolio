@@ -1,4 +1,6 @@
 import streamlit as st
+from utils import show_footer
+
 
 st.header("📝 Resume")
 
@@ -18,3 +20,5 @@ st.write("• 대전지역 문제해결 창업경진대회 우수상 (2024)")
 st.subheader("대외활동")
 st.write("• 밴드 동아리 활동 (2018~2025)")
 st.write("• AI 스터디 멤버, 블로그 글 기고")
+
+show_footer()
