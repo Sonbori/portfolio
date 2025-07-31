@@ -1,6 +1,5 @@
 import streamlit as st
 import datetime, json, os
-import yaml
 from pathlib import Path
 
 DATA_PATH = "data/visitor_count.json"
@@ -39,7 +38,6 @@ def show_footer():
         """,
         unsafe_allow_html=True
     )
-
 def load_markdown_posts(folder="posts"):
     posts = []
     for md in sorted(Path(folder).glob("*.md")):
@@ -47,14 +45,30 @@ def load_markdown_posts(folder="posts"):
         posts.append({**meta, "content": content, "path": md})
     return posts
 
-
 def parse_md(path):
+    """파일 상단에 --- 구분 front-matter가 있으면 수동 파싱, 없으면 전체를 content로."""
     lines = path.read_text(encoding='utf-8').splitlines()
-    if lines[0]=='---':
-        end = lines[1:].index('---')+1
-        meta = yaml.safe_load("\n".join(lines[1:end]))
-        content = "\n".join(lines[end+1:])
-    else:
-        meta = {}
-        content = path.read_text(encoding='utf-8')
+    meta = {}
+    content_start = 0
+    if len(lines) >= 3 and lines[0].strip() == '---':
+        # 두 번째 '---' 찾기
+        try:
+            end_idx = lines[1:].index('---') + 1
+            # front-matter 구역
+            for ln in lines[1:end_idx]:
+                if ':' in ln:
+                    k, v = ln.split(':', 1)
+                    k = k.strip()
+                    v = v.strip()
+                    # tags는 [a,b] 형태로 파싱
+                    if k == 'tags':
+                        items = v.strip('[]').split(',')
+                        meta['tags'] = [it.strip().strip('\"').strip('\'') for it in items if it.strip()]
+                    else:
+                        meta[k] = v.strip('\"').strip('\'')
+        except ValueError:
+            end_idx = 0
+        content_start = end_idx + 1
+    content = "\n".join(lines[content_start:])
     return meta, content
+ 

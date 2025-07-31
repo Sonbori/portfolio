@@ -1,6 +1,4 @@
 import streamlit as st
-from utils import show_footer
-
 
 st.header("🏆 Projects")
 
@@ -32,5 +30,3 @@ with st.expander("프로젝트 C: 비정형 텍스트 분류"):
     st.write("**배운 점:** NLP 전처리 및 Transfer Learning 경험")
 
 st.markdown("---")
-
-show_footer()

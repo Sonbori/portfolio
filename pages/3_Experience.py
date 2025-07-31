@@ -1,6 +1,4 @@
 import streamlit as st
-from utils import show_footer
-
 
 st.header("💼 Experience & Internships")
 
@@ -19,5 +17,3 @@ with st.expander("주요 인턴/아르바이트 이력"):
     st.write("• KARI 우주연구원 (2024.02 ~ 2024.03): 간이 위성 제작 및 CUDA 기반 영상 처리")
 
 st.markdown("---")
-
-show_footer()
