@@ -1,34 +1,32 @@
 import streamlit as st
-import datetime, json, os
+from datetime import date
+import json, os
 from pathlib import Path
 
 DATA_PATH = "data/visitor_count.json"
 
 def load_counts():
     if not os.path.exists(DATA_PATH):
-        counts = {"total": 0, "today": 0, "yesterday": 0, "date": str(datetime.date.today())}
-    else:
-        try:
-            with open(DATA_PATH, "r", encoding="utf-8") as fp:
-                counts = json.load(fp)
-        except (ValueError, json.JSONDecodeError):
-            counts = {"total": 0, "today": 0, "yesterday": 0, "date": str(datetime.date.today())}
-    return counts
+        return {"total":0,"today":0,"yesterday":0,"date":str(date.today())}
+    try:
+        return json.load(open(DATA_PATH,"r",encoding="utf-8"))
+    except:
+        return {"total":0,"today":0,"yesterday":0,"date":str(date.today())}
 
-def save_counts(counts):
+def save_counts(c):
     os.makedirs(os.path.dirname(DATA_PATH), exist_ok=True)
-    with open(DATA_PATH, "w", encoding="utf-8") as f:
-        json.dump(counts, f)
+    with open(DATA_PATH,"w",encoding="utf-8") as f:
+        json.dump(c, f)
 
 def increment_count():
     counts = load_counts()
-    today = str(datetime.date.today())
+    today = str(date.today())
     if counts["date"] != today:
-        counts["yesterday"] = counts.get("today", 0)
+        counts["yesterday"] = counts.get("today",0)
         counts["today"] = 0
         counts["date"] = today
-    counts["today"] = counts.get("today", 0) + 1
-    counts["total"] = counts.get("total", 0) + 1
+    counts["today"] += 1
+    counts["total"] += 1
     save_counts(counts)
     return counts
 
