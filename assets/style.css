@@ -6,13 +6,17 @@ body {
 /* Hide streamlit header/footer */
 header, footer { visibility: hidden; height: 0; }
 
-/* Footer 스타일 */
-.footer {
-  width: 100%;
-  text-align: center;
-  font-size: 0.8rem;
-  color: #888;           /* 텍스트는 조금 옅은 회색 */
-  padding: 1rem 0;
-  margin-top: 3rem;      /* 위 콘텐츠와 여백 */
-  border-top: 1px solid #44475a;  /* 위쪽에 얇은 구분선 */
+/* 사이드바를 Flex 컨테이너로 바꿔 세로 배치, 높이는 뷰포트 전체 */
+[data-testid="stSidebar"] > div:first-child {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;      /* 뷰포트 높이만큼 */
+  padding: 1rem;      /* 사이드바 패딩 */
+}
+
+/* visitor-count 클래스를 가진 마지막 블록만 자동 여백 추가 */
+.visitor-count {
+  margin-top: auto;   /* 위 여백을 모두 차지해서 맨 아래로 */
+  font-size: 0.9rem;
+  color: #bbb;
 }
