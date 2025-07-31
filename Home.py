@@ -22,7 +22,6 @@ def show_home():
             """
         )
         st.markdown("---")
-        show_visitor_count()
         st.write(
             "✉️ thsqhrjs@gmail.com   |   📞 +82-10-7234-6844"
         )
