@@ -1,0 +1,10 @@
+/* 헤더와 푸터 숨기기 예시 */
+header { visibility: hidden; }
+footer { visibility: hidden; }
+
+/* 전역 글꼴 및 여백 */
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}

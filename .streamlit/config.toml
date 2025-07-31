@@ -1,0 +1,7 @@
+[theme]
+base = "dark"                  # 기본 다크 모드
+primaryColor = "#1f77b4"      # 포인트 컬러 (청록 계열)
+backgroundColor = "#121212"   # 메인 배경
+secondaryBackgroundColor = "#232323"  # 위젯 배경
+textColor = "#ffffff"          # 기본 글자 색상
+font = "sans serif"            # 기본 폰트
